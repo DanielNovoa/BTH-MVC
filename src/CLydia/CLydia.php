@@ -36,7 +36,7 @@ class CLydia implements ISingleton {
   public function FrontControllerRoute() {
     // Take current url and divide it in controller, method and parameters
     $this->request = new CRequest();
-    $this->request->Init();
+    $this->request->Init($this->config['base_url']);
     $controller = $this->request->controller;
     $method     = $this->request->method;
     $arguments  = $this->request->arguments;
@@ -75,19 +75,20 @@ class CLydia implements ISingleton {
   
   
   /**
-   * ThemeEngineRender, renders the reply of the request.
+   * ThemeEngineRender, renders the reply of the request to HTML or whatever.
    */
   public function ThemeEngineRender() {
     // Get the paths and settings for the theme
     $themeName   = $this->config['theme']['name'];
     $themePath   = LYDIA_INSTALL_PATH . "/themes/{$themeName}";
-    $themeUrl    = "themes/{$themeName}";
+    $themeUrl    = $this->request->base_url . "themes/{$themeName}";
     
     // Add stylesheet path to the $ly->data array
     $this->data['stylesheet'] = "{$themeUrl}/style.css";
 
     // Include the global functions.php and the functions.php that are part of the theme
     $ly = &$this;
+    include(LYDIA_INSTALL_PATH . '/themes/functions.php');
     $functionsPath = "{$themePath}/functions.php";
     if(is_file($functionsPath)) {
       include $functionsPath;

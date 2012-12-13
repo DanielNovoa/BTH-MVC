@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * Standard controller layout.
  * 
@@ -14,4 +14,4 @@ class CCIndex implements IController {
     $ly->data['title'] = "The Index Controller";
   }
 
-}  
+}
