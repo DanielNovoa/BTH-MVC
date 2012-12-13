@@ -43,3 +43,11 @@ $ly->config['language'] = 'en';
 $ly->config['controllers'] = array(
   'index'     => array('enabled' => true,'class' => 'CCIndex'),
 );
+
+/**
+ * Settings for the theme.
+ */
+$ly->config['theme'] = array(
+  // The name of the theme in the theme directory
+  'name'    => 'core', 
+);
