@@ -35,7 +35,7 @@ class CLydia implements ISingleton {
    */
   public function FrontControllerRoute() {
     // Take current url and divide it in controller, method and parameters
-    $this->request = new CRequest();
+    $this->request = new CRequest($this->config['url_type']);
     $this->request->Init($this->config['base_url']);
     $controller = $this->request->controller;
     $method     = $this->request->method;
@@ -60,7 +60,11 @@ class CLydia implements ISingleton {
         if($rc->hasMethod($method)) {
           $controllerObj = $rc->newInstance();
           $methodObj = $rc->getMethod($method);
-          $methodObj->invokeArgs($controllerObj, $arguments);
+          if($methodObj->isPublic()) {
+            $methodObj->invokeArgs($controllerObj, $arguments);
+          } else {
+            die("404. " . get_class() . ' error: Controller method not public.');          
+          }
         } else {
           die("404. " . get_class() . ' error: Controller does not contain method.');
         }

@@ -21,7 +21,7 @@ function get_debug() {
  * Prepend the base_url.
  */
 function base_url($url) {
-  return CLydia::Instance()->request->base_url . trim($url, '/');
+  return $ly->request->base_url . trim($url, '/');
 }
 
 
@@ -29,5 +29,5 @@ function base_url($url) {
  * Return the current url.
  */
 function current_url() {
-  return CLydia::Instance()->request->current_url;
+  return $ly->request->current_url;
 }
