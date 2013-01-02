@@ -13,6 +13,18 @@ class CCDeveloper implements IController {
     $this->Menu();
   }
 
+/**
+* Display all items of the CObject.
+*/
+public function DisplayObject() {
+$this->Menu();
+
+$this->data['main'] .= <<<EOD
+<h2>Dumping content of CDeveloper</h2>
+<p>Here is the content of the controller, including properties from CObject which holds access to common resources in CLydia.</p>
+EOD;
+$this->data['main'] .= '<pre>' . htmlentities(print_r($this, true)) . '</pre>';
+}
 
   /**
     * Create a list of links in the supported ways.
@@ -74,3 +86,21 @@ EOD;
   }
   
 }  
+
+    class CCDeveloper extends CObject implements IController {
+
+      /**
+       * Constructor
+       */
+      public function __construct() {
+        parent::__construct();
+      }
+
+             public function Links() {   
+
+          // some code removed
+          $this->request->cleanUrl = false;
+          $this->request->querystringUrl = true;      
+          $querystring  = $this->request->CreateUrl($url);
+          
+          $this->data['title'] = "The Developer Controller";
