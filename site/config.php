@@ -11,6 +11,11 @@ error_reporting(-1);
 ini_set('display_errors', 1);
 
 /**
+* Set database(s).
+*/
+$ly->config['database'][0]['dsn'] = 'sqlite:' . LYDIA_SITE_PATH . '/data/.ht.sqlite';
+
+/**
  * What type of urls should be used?
  * 
  * default      = 0      => index.php/controller/method/arg1/arg2/arg3
