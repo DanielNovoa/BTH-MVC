@@ -6,13 +6,20 @@
  
 
 /**
- * Print debuginformation from the framework.
- */
+* Print debuginformation from the framework.
+*/
 function get_debug() {
-  $ly = CLydia::Instance();
-  $html = "<h2>Debuginformation</h2><hr><p>The content of the config array:</p><pre>" . htmlentities(print_r($ly->config, true)) . "</pre>";
-  $html .= "<hr><p>The content of the data array:</p><pre>" . htmlentities(print_r($ly->data, true)) . "</pre>";
-  $html .= "<hr><p>The content of the request array:</p><pre>" . htmlentities(print_r($ly->request, true)) . "</pre>";
+  $ly = CLydia::Instance(); 
+  $html = null;
+  if(isset($ly->config['debug']['db-num-queries']) && $ly->config['debug']['db-num-queries'] && isset($ly->db)) {
+    $html .= "<p>Database made " . $ly->db->GetNumQueries() . " queries.</p>";
+  }   
+  if(isset($ly->config['debug']['db-queries']) && $ly->config['debug']['db-queries'] && isset($ly->db)) {
+    $html .= "<p>Database made the following queries.</p><pre>" . implode('<br/><br/>', $ly->db->GetQueries()) . "</pre>";
+  }   
+  if(isset($ly->config['debug']['lydia']) && $ly->config['debug']['lydia']) {
+    $html .= "<hr><h3>Debuginformation</h3><p>The content of CLydia:</p><pre>" . htmlent(print_r($ly, true)) . "</pre>";
+  }   
   return $html;
 }
 

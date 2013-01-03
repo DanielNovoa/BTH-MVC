@@ -72,3 +72,10 @@ $ly->config['theme'] = array(
   // The name of the theme in the theme directory
   'name'    => 'core', 
 );
+
+/**
+* Set what to show as debug or developer information in the get_debug() theme helper.
+*/
+$ly->config['debug']['lydia'] = false;
+$ly->config['debug']['db-num-queries'] = true;
+$ly->config['debug']['db-queries'] = true;

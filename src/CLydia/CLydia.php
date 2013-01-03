@@ -15,6 +15,11 @@ class CLydia implements ISingleton {
     // include the site specific config.php and create a ref to $ly to be used by config.php
     $ly = &$this;
     require(LYDIA_SITE_PATH.'/config.php');
+
+    // Create a database object.
+    if(isset($this->config['database'][0]['dsn'])) {
+   $this->db = new CMDatabase($this->config['database'][0]['dsn']);
+    }
   }
   
   
