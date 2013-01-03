@@ -24,6 +24,7 @@ class CObject {
     $this->request  = &$ly->request;
     $this->data     = &$ly->data;
     $this->db       = &$ly->db;
+    $this->views    = &$ly->views;
   }
 
 }

@@ -8,7 +8,7 @@
  */
 $ly->data['header'] = '<h1>Header: conFusion</h1>';
 $ly->data['footer'] = <<<EOD
-<p>Footer: &copy; Lydia by Mikael Roos (mos@dbwebb.se)</p>
+<p>Footer: &copy; conFusion by Daniel Novoa</p>
 
 <p>Tools: 
 <a href="http://validator.w3.org/check/referer">html5</a>
