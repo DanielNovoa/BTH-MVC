@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * Main class for Lydia, holds everything.
  *

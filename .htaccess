@@ -4,7 +4,7 @@
 <IfModule mod_rewrite.c>
   RewriteEngine on
   # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
-  #RewriteBase /change/this/to/site/base/url/if/needed/
+  RewriteBase /~danf12/2012_ht/course_3/ex_3/conFusion/
   # -- caused error, works without -- RewriteBase www.student.bth.se/~danf12/2012_ht/course_3/ex_2/
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

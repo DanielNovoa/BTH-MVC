@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * Parse the request and identify controller, method and arguments.
  *
