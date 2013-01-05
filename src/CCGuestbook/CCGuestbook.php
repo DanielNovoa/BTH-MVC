@@ -6,8 +6,6 @@
 */
 class CCGuestbook extends CObject implements IController, IHasSQL {
 
-  private $pageTitle = 'conFusion Guestbook Example';
-
 
   /**
 * Constructor
@@ -40,10 +38,10 @@ return $queries[$key];
 * Implementing interface IController. All controllers must have an index action.
 */
   public function Index() {
-    $this->views->SetTitle($this->pageTitle);
+    $this->views->SetTitle('conFusion Guestbook Example');
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
       'entries'=>$this->ReadAllFromDatabase(),
-      'formAction'=>$this->request->CreateUrl('guestbook/handler')
+      'form_action'=>$this->request->CreateUrl('', 'handler')
     ));
   }
   
@@ -61,7 +59,7 @@ return $queries[$key];
     elseif(isset($_POST['doCreate'])) {
       $this->CreateTableInDatabase();
     }
-    header('Location: ' . $this->request->CreateUrl('guestbook'));
+    $this->RedirectTo($this->request->CreateUrl($this->request->controller));
   }
   
 
@@ -71,6 +69,7 @@ return $queries[$key];
   private function CreateTableInDatabase() {
     try {
       $this->db->ExecuteQuery(self::SQL('create table guestbook'));
+      $this->session->AddMessage('notice', 'Successfully created the database tables (or left them untouched if they already existed).');
     } catch(Exception$e) {
       die("$e<br/>Failed to open database: " . $this->config['database'][0]['dsn']);
     }
@@ -82,6 +81,7 @@ return $queries[$key];
 */
   private function SaveNewToDatabase($entry) {
     $this->db->ExecuteQuery(self::SQL('insert into guestbook'), array($entry));
+    $this->session->AddMessage('success', 'Successfully inserted new message.');
     if($this->db->rowCount() != 1) {
       die('Failed to insert new guestbook item into database.');
     }
@@ -93,6 +93,7 @@ return $queries[$key];
 */
   private function DeleteAllFromDatabase() {
     $this->db->ExecuteQuery(self::SQL('delete from guestbook'));
+    $this->session->AddMessage('info', 'Removed all messages from the database table.');
   }
   
   

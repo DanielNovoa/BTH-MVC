@@ -29,11 +29,24 @@ class CRequest {
   }
 
 
-  /**
-   * Create a url in the way it should be created.
-   *
-   */
-  public function CreateUrl($url=null) {
+    /**
+* Create a url in the way it should be created.
+*
+* @param $url string the relative url or the controller
+* @param $method string the method to use, $url is then the controller or empty for current
+*/
+public function CreateUrl($url=null, $method=null) {
+    // If fully qualified just leave it.
+if(!empty($url) && (strpos($url, '://') || $url[0] == '/')) {
+return $url;
+}
+    
+    // Get current controller if empty and method choosen
+    if(empty($url) && !empty($method)) {
+      $url = $this->controller;
+    }
+    
+    // Create url according to configured style
     $prepend = $this->base_url;
     if($this->cleanUrl) {
       ;
@@ -42,7 +55,7 @@ class CRequest {
     } else {
       $prepend .= 'index.php/';
     }
-    return $prepend . rtrim($url, '/');
+    return $prepend . rtrim("$url/$method", '/');
   }
 
 
