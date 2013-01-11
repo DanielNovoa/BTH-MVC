@@ -24,4 +24,4 @@ class CCIndex extends CObject implements IController {
   }
 
 
-} 
+}
