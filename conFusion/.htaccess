@@ -5,7 +5,7 @@
   RewriteEngine on
 
   # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
-  RewriteBase /~danf12/2012_ht/course_3/ex_5/conFusion/
+  RewriteBase /~danf12/2012_ht/course_3/ex_6/conFusion/
   
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
