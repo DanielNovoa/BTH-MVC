@@ -1,0 +1,13 @@
+# ------------------------------------------------------
+# Skicka alla requester till index.php
+# ------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
+  RewriteBase /~danf12/2012_ht/course_3/ex_7/conFusion/
+  
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule (.*) index.php/$1 [NC,L]
+</IfModule>
