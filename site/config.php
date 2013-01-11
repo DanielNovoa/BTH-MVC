@@ -99,6 +99,7 @@ $ly->config['controllers'] = array(
   'page' => array('enabled' => true,'class' => 'CCPage'),
   'user' => array('enabled' => true,'class' => 'CCUser'),
   'acp' => array('enabled' => true,'class' => 'CCAdminControlPanel'),
+  'module' => array('enabled' => true,'class' => 'CCModules'),
 );
 
 
@@ -117,12 +118,12 @@ $ly->config['theme'] = array(
   ),
   // Add static entries for use in the template file.
   'data' => array(
-    'header' => 'conFusion',
+    'header' => 'Lydia',
     'slogan' => 'A PHP-based MVC-inspired CMF',
     'favicon' => 'logo_80x80.png',
     'logo' => 'logo_80x80.png',
     'logo_width' => 80,
     'logo_height' => 80,
-    'footer' => '<p>conFusion &copy; by Daniel Novoa</p>',
+    'footer' => '<p>Lydia &copy; by Mikael Roos (mos@dbwebb.se)</p>',
   ),
 );
