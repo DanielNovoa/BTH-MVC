@@ -117,12 +117,12 @@ $ly->config['theme'] = array(
   ),
   // Add static entries for use in the template file.
   'data' => array(
-    'header' => 'Lydia',
+    'header' => 'conFusion',
     'slogan' => 'A PHP-based MVC-inspired CMF',
     'favicon' => 'logo_80x80.png',
     'logo' => 'logo_80x80.png',
     'logo_width' => 80,
     'logo_height' => 80,
-    'footer' => '<p>Lydia &copy; by Mikael Roos (mos@dbwebb.se)</p>',
+    'footer' => '<p>conFusion &copy; by Daniel Novoa</p>',
   ),
 );
